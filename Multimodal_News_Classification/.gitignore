@@ -1,8 +1,7 @@
-# Dataset and generated artifacts
+# Dataset
 data/input_data.zip
 data/input_data.pkl
 artifacts/*
-!artifacts/.gitkeep
 
 # Python and notebooks
 __pycache__/
