@@ -10,7 +10,7 @@ The analysis includes feature engineering, preprocessing, class-imbalance strate
 
 The selected pipeline combines random over-sampling with L1-regularized logistic regression.
 
-- Nested cross-validation F1: **0.7869 +/- 0.0129**
+- Nested cross-validation F1: **0.7869**
 - Training F1: **0.8003**
 - Held-out test F1: **0.8142**
 
