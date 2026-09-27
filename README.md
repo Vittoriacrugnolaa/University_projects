@@ -17,7 +17,7 @@ A multi-input TensorFlow model for assigning several subject labels to a news ar
 A classification study focused on identifying students at risk of dropping out. The work covers data exploration, feature preparation, class imbalance, model comparison, nested cross-validation, and model interpretation.
 
 - **Selected model:** L1-regularized logistic regression with random oversampling
-- **Test result:** F1-score 0.807
+- **Test result:** F1-score 0.814
 - **Focus:** an interpretable pipeline for understanding the main factors associated with dropout
 
 [Project details](Student_Dropout/) · [Notebook](Student_Dropout/Student_Persistence_Dropout.ipynb) · [Report](Student_Dropout/Student_Dropout_essay.pdf)
