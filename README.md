@@ -20,7 +20,7 @@ A classification study focused on identifying students at risk of dropping out. 
 - **Test result:** F1-score 0.807
 - **Focus:** an interpretable pipeline for understanding the main factors associated with dropout
 
-[Notebook](Student_Persistence_Dropout.ipynb) · [Report](Student_Dropout_essay.pdf)
+[Project details](Student_Dropout/) · [Notebook](Student_Dropout/Student_Persistence_Dropout.ipynb) · [Report](Student_Dropout/Student_Dropout_essay.pdf)
 
 ## Sokoban Pathfinding Prototype
 

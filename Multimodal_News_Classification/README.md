@@ -17,7 +17,11 @@ The dataset contains 11,000 articles and is divided into stratified training, va
 
 Test binary cross-entropy: **0.246**.
 
-The per-label thresholds improve recall and macro-F1 with a small reduction in Hamming accuracy. The training history also shows some overfitting after the best validation epoch, which is handled with early stopping and restoration of the best weights.
+The per-label thresholds improve recall and macro-F1 with a small reduction in Hamming accuracy.
+
+## Possible improvements
+
+The training history shows that the model begins to overfit after the best validation epoch. This limitation is partly managed through early stopping and restoration of the best validation weights, but it remains an area for improvement. A larger and more varied dataset, a broader hyperparameter search, and repeated experiments with different random seeds could improve generalization. Additional computing resources would also make it possible to test larger recurrent networks or pretrained transformer-based text encoders. Further work on regularization and label-specific calibration could improve performance on the less frequent labels.
 
 ## Model
 
