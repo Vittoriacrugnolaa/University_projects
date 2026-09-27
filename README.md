@@ -1,8 +1,32 @@
 # University Projects
 
-A collection of applied machine-learning and data-science projects.
+This repository contains three university projects covering deep learning, classical machine learning, and search algorithms. Each folder includes the notebook or report together with the information needed to understand and reproduce the work.
 
-## Projects
+## Multimodal News Classification
 
-- [Multimodal Multi-Label News Classification](Multimodal_News_Classification/) — a fully executed TensorFlow notebook that combines raw text, Bag-of-Words features, and publication metadata across all 11,000 available articles.
-- [Student Persistence and Dropout](Student_Persistence_Dropout.ipynb) — an interpretable machine-learning study for identifying students at risk of dropping out. It combines socio-academic feature engineering, leakage-safe preprocessing, imbalance handling, and nested cross-validation; the selected L1-regularized logistic regression achieved approximately 0.80 validation F1. [Read the report](Student_Dropout_essay.pdf).
+A multi-input TensorFlow model for assigning several subject labels to a news article. It combines raw text, Bag-of-Words features, and publication metadata in three separate branches.
+
+- **Data:** 11,000 articles and 18 labels
+- **Model:** Embedding and Bi-LSTM for text, Dense layers for Bag-of-Words and metadata
+- **Test results:** micro-F1 0.684 and macro-F1 0.656 with validation-based thresholds
+
+[Project details](Multimodal_News_Classification/) · [Notebook](Multimodal_News_Classification/notebooks/multimodal_news_classification.ipynb)
+
+## Student Persistence and Dropout
+
+A classification study focused on identifying students at risk of dropping out. The work covers data exploration, feature preparation, class imbalance, model comparison, nested cross-validation, and model interpretation.
+
+- **Selected model:** L1-regularized logistic regression with random oversampling
+- **Test result:** F1-score 0.807
+- **Focus:** an interpretable pipeline for understanding the main factors associated with dropout
+
+[Notebook](Student_Persistence_Dropout.ipynb) · [Report](Student_Dropout_essay.pdf)
+
+## Sokoban Pathfinding Prototype
+
+A Python notebook that tests movement and search on Sokoban-style grids with static walls. It compares Random Search, DFS, BFS, and A* across nine levels.
+
+- **Result:** BFS and A* find the same shortest path length on every predefined level
+- **Scope:** player navigation and pathfinding; box-pushing is not implemented
+
+[Project details](Sokoban_Pathfinding/) · [Notebook](Sokoban_Pathfinding/sokoban_pathfinding_prototype.ipynb)
