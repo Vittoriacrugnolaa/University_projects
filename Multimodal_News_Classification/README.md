@@ -44,7 +44,7 @@ The selected model has about 2.67 million trainable parameters. A small validati
 | Year and month | 11,000 × 2 | Standard scaling and one-hot encoding |
 | Targets | 11,000 × 18 | Multi-label binary matrix |
 
-The dataset is not included because the archive contains third-party article text and no redistribution license was provided. To reproduce the notebook, place the original `input_data.zip` in the project directory or upload it when prompted in Colab. The archive used for the recorded run has SHA-256 checksum `fb6c46eb6658d9c71e56dfd614f04b607c23ed81aad39f5f9047df3e28fde075`.
+The dataset is not included because the archive contains third-party article text and no redistribution license was provided. 
 
 The dataset contains label indices but no category names, so the notebook reports `label_0` through `label_17`.
 
