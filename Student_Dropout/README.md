@@ -2,7 +2,7 @@
 
 This notebook studies student dropout as a binary classification problem using demographic, socioeconomic, enrollment, and academic information. `Dropout` is the positive class; `Graduate` and `Enrolled` are grouped as non-dropout.
 
-The analysis includes feature engineering, preprocessing, class-imbalance strategies, model comparison, nested cross-validation, final test evaluation, and interpretation of logistic-regression coefficients. Because the retained academic variables include second-semester performance, the model should be understood as risk monitoring after two semesters rather than an enrollment-time early-warning system.
+The analysis includes feature engineering, preprocessing, class-imbalance strategies, model comparison, nested cross-validation, final test evaluation, and interpretation of logistic-regression coefficients. 
 
 [Open the notebook in Google Colab](https://colab.research.google.com/github/Vittoriacrugnolaa/University_projects/blob/main/Student_Dropout/Student_Persistence_Dropout.ipynb)
 
