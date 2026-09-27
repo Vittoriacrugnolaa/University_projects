@@ -1,52 +1,48 @@
 # Multimodal Multi-Label News Classification
 
-[![Python](https://img.shields.io/badge/Python-3.10%20%E2%80%93%203.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.16%20%E2%80%93%202.20-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Vittoriacrugnolaa/University_projects/blob/main/Multimodal_News_Classification/notebooks/multimodal_news_classification.ipynb)
+A TensorFlow notebook for assigning multiple subject labels to news articles.
 
-A self-contained TensorFlow notebook for multi-label classification of news articles. The original three-input design is retained: raw text, a supplied Bag-of-Words representation, and publication metadata are processed in separate branches and combined before the 18 sigmoid outputs.
+Each article is represented by three inputs: raw text, a 10,000-dimensional Bag-of-Words vector, and publication metadata. The model processes them in separate branches and combines the three representations before producing 18 independent label probabilities.
 
-The notebook is committed with all cells executed, so its model summary, validation search, training history, test metrics, classification report, confusion matrices, and loss chart can be inspected directly on GitHub.
+[Open the notebook in Google Colab](https://colab.research.google.com/github/Vittoriacrugnolaa/University_projects/blob/main/Multimodal_News_Classification/notebooks/multimodal_news_classification.ipynb)
 
 ## Results
 
-All 11,000 available articles are used with a stratified 70/15/15 train, validation, and test split. Preprocessing, early stopping, model selection, and decision thresholds use training or validation data only; the test set is evaluated once at the end.
+The dataset contains 11,000 articles and is divided into stratified training, validation, and test sets (70/15/15). The test set is used only for the final evaluation.
 
 | Decision rule | Exact-match accuracy | Micro-F1 | Macro-F1 | Weighted-F1 | Hamming accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Threshold 0.50 | **0.507** | 0.682 | 0.644 | 0.677 | **0.926** |
-| Validation-tuned thresholds | 0.506 | **0.684** | **0.656** | **0.684** | 0.922 |
+| Thresholds selected on validation data | 0.506 | **0.684** | **0.656** | **0.684** | 0.922 |
 
-Validation-tuned thresholds improve macro-F1 by balancing precision and recall across labels. Both decision rules are reported in the notebook to make the trade-off explicit.
+Test binary cross-entropy: **0.246**.
+
+The per-label thresholds improve recall and macro-F1 with a small reduction in Hamming accuracy. The training history also shows some overfitting after the best validation epoch, which is handled with early stopping and restoration of the best weights.
 
 ## Model
 
 ```text
-Text -> tokenization -> embedding -> Bi-LSTM ------------------
-                                                               |
-BoW -> L1 normalization -> Dense ------------------------------|-> concatenate -> Dense -> 18 sigmoid outputs
-                                                               |
-Year and month -> scaling and one-hot encoding -> Dense -------
+Raw text -> tokenization -> embedding -> Bi-LSTM ----------------
+                                                                 |
+Bag-of-Words -> L1 normalization -> Dense -----------------------|-> Concatenate -> Dense -> 18 sigmoid outputs
+                                                                 |
+Year and month -> scaling and one-hot encoding -> Dense ----------
 ```
 
-The selected network contains approximately 2.67 million trainable parameters. Its configuration is chosen through the compact validation search already included in the notebook, followed by early stopping and learning-rate reduction.
+The selected model has about 2.67 million trainable parameters. A small validation search compares three configurations before the final training run.
 
 ## Data
 
 | Input | Shape | Processing |
 | --- | ---: | --- |
-| Article text | 11,000 strings | Cleaning, integer encoding, embedding, Bi-LSTM |
-| Bag-of-Words | 11,000 × 10,000 | L1 row normalization, Dense layer |
+| Article text | 11,000 strings | Cleaning, tokenization, embedding, Bi-LSTM |
+| Bag-of-Words | 11,000 × 10,000 | L1 normalization, Dense layer |
 | Year and month | 11,000 × 2 | Standard scaling and one-hot encoding |
 | Targets | 11,000 × 18 | Multi-label binary matrix |
 
-The archive is excluded from Git because it contains third-party article text and no redistribution license was supplied. Place the original `input_data.zip` in `data/`, or upload it when the Colab notebook requests it. See [data/README.md](data/README.md) for the expected schema and checksum.
+The dataset is not included because the archive contains third-party article text and no redistribution license was provided. To reproduce the notebook, place the original `input_data.zip` in `data/` or upload it when prompted in Colab. The expected schema and checksum are listed in [data/README.md](data/README.md).
 
-The dataset provides label indices but not human-readable category names, so the evaluation uses `label_0` through `label_17` without inventing a taxonomy.
-
-## Run in Google Colab
-
-Open the notebook with the badge above and run all cells. When requested, upload the original `input_data.zip` archive. A GPU is optional.
+The dataset contains label indices but no category names, so the notebook reports `label_0` through `label_17`.
 
 ## Run locally
 
@@ -58,18 +54,4 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
-Place the archive at `data/input_data.zip`, then open [the notebook](notebooks/multimodal_news_classification.ipynb).
-
-## Repository contents
-
-```text
-Multimodal_News_Classification/
-├── data/README.md
-├── notebooks/multimodal_news_classification.ipynb
-├── README.md
-└── requirements.txt
-```
-
-## Author
-
-[Vittoria Crugnola](https://github.com/Vittoriacrugnolaa)
+Place the archive at `data/input_data.zip`, then open [the notebook](notebooks/multimodal_news_classification.ipynb). It is committed with the training output, metrics, classification report, confusion matrices, and loss curve already visible.
